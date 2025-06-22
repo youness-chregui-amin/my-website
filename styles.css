@@ -1370,20 +1370,49 @@ body.dark-mode .contact::before {
                 radial-gradient(circle at 70% 30%, rgba(0, 246, 255, 0.1) 0%, transparent 50%);
 }
 
-.contact-content {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    max-width: 1200px;
-    margin: 0 auto;
+.contact-info-section,
+.contact-form-section {
+    max-width: 800px;
+    margin: 0 auto 4rem auto;
     position: relative;
     z-index: 1;
+}
+
+.contact-subtitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--dark-blue);
+    margin-bottom: 2rem;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    position: relative;
+}
+
+.contact-subtitle::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--dark-blue), var(--light-sky-blue));
+    border-radius: 2px;
+}
+
+body.dark-mode .contact-subtitle {
+    color: var(--cyber-cyan);
+}
+
+body.dark-mode .contact-subtitle::after {
+    background: linear-gradient(90deg, var(--cyber-pink), var(--cyber-cyan));
 }
 
 .contact-info {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
+    margin-bottom: 3rem;
 }
 
 .contact-item {
@@ -1517,19 +1546,6 @@ body.dark-mode .contact-form-container {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-.contact-form-container h3 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--dark-blue);
-    margin-bottom: 2rem;
-    text-align: center;
-    font-family: 'JetBrains Mono', monospace;
-}
-
-body.dark-mode .contact-form-container h3 {
-    color: var(--cyber-cyan);
-}
-
 .contact-form {
     display: flex;
     flex-direction: column;
@@ -1640,7 +1656,7 @@ body.dark-mode .form-group textarea:invalid:focus {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
-    margin-top: 3rem;
+    margin-top: 2rem;
 }
 
 .social-link {
@@ -1690,21 +1706,6 @@ body.dark-mode .social-link {
 
 body.dark-mode .social-link:hover {
     box-shadow: 0 15px 35px rgba(0, 246, 255, 0.4);
-}
-
-/* Footer */
-.footer {
-    background: var(--dark-blue);
-    color: var(--white);
-    text-align: center;
-    padding: 2rem 0;
-    transition: background-color 0.3s;
-    font-family: 'JetBrains Mono', monospace;
-}
-
-body.dark-mode .footer {
-    background: var(--dark-card);
-    border-top: 1px solid var(--dark-border);
 }
 
 /* Tablet Styles */
@@ -1876,4 +1877,19 @@ body.dark-mode .footer {
     .python-logo {
         font-size: 1.2rem;
     }
+}
+
+/* Footer */
+.footer {
+    background: var(--dark-blue);
+    color: var(--white);
+    text-align: center;
+    padding: 2rem 0;
+    transition: background-color 0.3s;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+body.dark-mode .footer {
+    background: var(--dark-card);
+    border-top: 1px solid var(--dark-border);
 } 
