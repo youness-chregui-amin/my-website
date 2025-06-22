@@ -1,3 +1,4 @@
+// Mobile Navigation Toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
@@ -478,4 +479,116 @@ notificationStyles.textContent = `
         color: var(--dark-text);
     }
 `;
-document.head.appendChild(notificationStyles); 
+document.head.appendChild(notificationStyles);
+
+// Skills Section Typing Animation
+function animateSkills() {
+    const skillItems = document.querySelectorAll('.skill-item');
+    const skillPercentages = document.querySelectorAll('.skill-percentage');
+    const skillProgresses = document.querySelectorAll('.skill-progress');
+    
+    // Reset all elements
+    skillItems.forEach(item => {
+        item.classList.remove('animate');
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(20px)';
+    });
+    
+    skillPercentages.forEach(percentage => {
+        percentage.classList.remove('animate');
+        percentage.style.opacity = '0';
+        percentage.style.transform = 'scale(0.8)';
+    });
+    
+    skillProgresses.forEach(progress => {
+        progress.classList.remove('animate');
+        progress.style.width = '0%';
+    });
+    
+    // Animate each skill item sequentially
+    skillItems.forEach((item, index) => {
+        setTimeout(() => {
+            // Animate the skill item
+            item.classList.add('animate');
+            
+            // Animate the percentage after a short delay
+            const percentage = item.querySelector('.skill-percentage');
+            const progress = item.querySelector('.skill-progress');
+            
+            setTimeout(() => {
+                percentage.classList.add('animate');
+                
+                // Animate the progress bar
+                setTimeout(() => {
+                    const width = progress.style.width || '0%';
+                    progress.style.setProperty('--progress-width', width);
+                    progress.classList.add('animate');
+                }, 300);
+                
+            }, 500);
+            
+        }, index * 800); // Delay each item by 800ms
+    });
+}
+
+// Typing effect for skill percentages
+function typePercentage(element, targetPercentage, speed = 100) {
+    let current = 0;
+    const increment = parseInt(targetPercentage) / 20;
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= parseInt(targetPercentage)) {
+            current = parseInt(targetPercentage);
+            clearInterval(timer);
+        }
+        element.textContent = Math.floor(current) + '%';
+    }, speed);
+}
+
+// Enhanced typing effect for skill text
+function typeSkillText(element, text, speed = 50) {
+    let i = 0;
+    element.innerHTML = '';
+    
+    function type() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+    type();
+}
+
+// Initialize skills animation when skills section comes into view
+const skillsAnimationObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animateSkills();
+            skillsAnimationObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.3,
+    rootMargin: '0px 0px -100px 0px'
+});
+
+// Observe skills section
+const skillsSectionElement = document.querySelector('.skills');
+if (skillsSectionElement) {
+    skillsAnimationObserver.observe(skillsSectionElement);
+}
+
+// Re-animate skills when switching themes
+function reanimateSkills() {
+    setTimeout(() => {
+        animateSkills();
+    }, 100);
+}
+
+// Add theme switch listener for re-animation
+const themeSwitcherElement = document.querySelector('.theme-switcher');
+if (themeSwitcherElement) {
+    themeSwitcherElement.addEventListener('click', reanimateSkills);
+}
