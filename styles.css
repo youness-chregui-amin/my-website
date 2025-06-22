@@ -16,7 +16,7 @@
     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 
-    
+    /* Cyberpunk Dark Mode Variables */
     --dark-bg: #0a0a1f;
     --dark-card: #1a1a3a;
     --dark-text: #e0e0e0;
@@ -1444,72 +1444,62 @@ body.dark-mode .footer {
     .nav-container {
         height: 70px;
     }
-    
     .nav-logo h2 {
         font-size: 1.5rem;
     }
-    
     .nav-menu {
-        position: static;
-        flex-direction: row;
-        background: none;
-        width: auto;
-        box-shadow: none;
-        padding: 0;
-        gap: 2rem;
+        position: static !important;
+        left: 0 !important;
+        top: auto !important;
+        flex-direction: row !important;
+        background: none !important;
+        width: auto !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        gap: 2rem !important;
+        display: flex !important;
     }
-    
     .nav-link {
-        padding: 0;
-        width: auto;
-        font-size: 1rem;
+        padding: 0 !important;
+        width: auto !important;
+        font-size: 1rem !important;
+        display: inline-block !important;
     }
-    
     .hamburger {
-        display: none;
+        display: none !important;
     }
-    
     .hero-title {
         font-size: 3rem;
     }
-    
     .hero-content {
         flex-direction: row;
         text-align: left;
         gap: 4rem;
     }
-    
     .hero-buttons {
         flex-direction: row;
         max-width: none;
     }
-    
     .profile-photo {
         width: 300px;
         height: 300px;
     }
-    
     .floating-logo {
         width: 50px;
         height: 50px;
     }
-    
     .about-stats {
         grid-template-columns: repeat(3, 1fr);
     }
-    
     .skills-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
     .projects-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
     .contact-content {
         grid-template-columns: 1fr 1fr;
     }
-    
     .contact-info {
         grid-template-columns: 1fr;
     }
