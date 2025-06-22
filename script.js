@@ -34,19 +34,87 @@ window.addEventListener('scroll', () => {
     
     if (window.scrollY > 100) {
         if (isDarkMode) {
-            navbar.style.background = 'rgba(17, 24, 39, 0.95)';
+            navbar.style.background = 'rgba(10, 10, 15, 0.95)';
         } else {
             navbar.style.background = 'rgba(255, 255, 255, 0.98)';
         }
         navbar.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
     } else {
         if (isDarkMode) {
-            navbar.style.background = 'rgba(17, 24, 39, 0.95)';
+            navbar.style.background = 'rgba(10, 10, 15, 0.95)';
         } else {
             navbar.style.background = 'rgba(255, 255, 255, 0.95)';
         }
         navbar.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
     }
+});
+
+// Animate stats on scroll
+const observerOptions = {
+    threshold: 0.5,
+    rootMargin: '0px 0px -100px 0px'
+};
+
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const stats = entry.target.querySelectorAll('.stat h3');
+            stats.forEach(stat => {
+                const target = parseInt(stat.textContent);
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    stat.textContent = Math.floor(current) + '+';
+                }, 20);
+            });
+            statsObserver.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Observe about section for stats animation
+const aboutSection = document.querySelector('.about');
+if (aboutSection) {
+    statsObserver.observe(aboutSection);
+}
+
+// Animate skill bars on scroll
+const skillsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const skillBars = entry.target.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+            skillsObserver.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Observe skills section
+const skillsSection = document.querySelector('.skills');
+if (skillsSection) {
+    skillsObserver.observe(skillsSection);
+}
+
+// Add hover effects to timeline items
+document.querySelectorAll('.timeline-content').forEach(item => {
+    item.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-5px)';
+    });
+    
+    item.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+    });
 });
 
 // Theme Switcher
@@ -58,9 +126,9 @@ function updateNavbarBackground() {
     const isDarkMode = document.body.classList.contains('dark-mode');
     
     if (window.scrollY > 100) {
-        navbar.style.background = isDarkMode ? 'rgba(17, 24, 39, 0.95)' : 'rgba(255, 255, 255, 0.98)';
+        navbar.style.background = isDarkMode ? 'rgba(10, 10, 15, 0.95)' : 'rgba(255, 255, 255, 0.98)';
     } else {
-        navbar.style.background = isDarkMode ? 'rgba(17, 24, 39, 0.95)' : 'rgba(255, 255, 255, 0.95)';
+        navbar.style.background = isDarkMode ? 'rgba(10, 10, 15, 0.95)' : 'rgba(255, 255, 255, 0.95)';
     }
 }
 
@@ -177,7 +245,51 @@ style.textContent = `
     }
     
     body.dark-mode .nav-link.active {
-        color: var(--accent-color) !important;
+        color: var(--cyber-cyan) !important;
     }
 `;
 document.head.appendChild(style);
+
+// Add loading animation
+window.addEventListener('load', () => {
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.5s ease-in-out';
+    
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+    }, 100);
+});
+
+// Add parallax effect for hero section (subtle)
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        const rate = scrolled * -0.3;
+        hero.style.transform = `translateY(${rate}px)`;
+    }
+});
+
+// Add typing effect for hero title
+function typeWriter(element, text, speed = 100) {
+    let i = 0;
+    element.innerHTML = '';
+    
+    function type() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+    type();
+}
+
+// Initialize typing effect when page loads
+window.addEventListener('load', () => {
+    const heroTitle = document.querySelector('.hero-title');
+    if (heroTitle) {
+        const originalText = heroTitle.textContent;
+        typeWriter(heroTitle, originalText, 50);
+    }
+});
