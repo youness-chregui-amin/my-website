@@ -34,170 +34,20 @@ window.addEventListener('scroll', () => {
     
     if (window.scrollY > 100) {
         if (isDarkMode) {
-            navbar.style.background = 'rgba(10, 10, 31, 0.95)';
+            navbar.style.background = 'rgba(17, 24, 39, 0.95)';
         } else {
             navbar.style.background = 'rgba(255, 255, 255, 0.98)';
         }
         navbar.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
     } else {
         if (isDarkMode) {
-            navbar.style.background = 'rgba(10, 10, 31, 0.85)';
+            navbar.style.background = 'rgba(17, 24, 39, 0.95)';
         } else {
             navbar.style.background = 'rgba(255, 255, 255, 0.95)';
         }
         navbar.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
     }
 });
-
-// Animate skill bars on scroll - REMOVED OLD OBSERVER
-// const observerOptions = {
-//     threshold: 0.5,
-//     rootMargin: '0px 0px -100px 0px'
-// };
-
-// const observer = new IntersectionObserver((entries) => {
-//     entries.forEach(entry => {
-//         if (entry.isIntersecting) {
-//             const skillBars = entry.target.querySelectorAll('.skill-progress');
-//             skillBars.forEach(bar => {
-//                 const width = bar.style.width;
-//                 bar.style.width = '0%';
-//                 setTimeout(() => {
-//                     bar.style.width = width;
-//                 }, 100);
-//             });
-//             observer.unobserve(entry.target);
-//         }
-//     });
-// }, observerOptions);
-
-// Observe skills section - REMOVED OLD OBSERVER
-// const skillsSection = document.querySelector('.skills');
-// if (skillsSection) {
-//     observer.observe(skillsSection);
-// }
-
-// Animate stats on scroll
-const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const stats = entry.target.querySelectorAll('.stat h3');
-            stats.forEach(stat => {
-                const target = parseInt(stat.textContent);
-                let current = 0;
-                const increment = target / 50;
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        current = target;
-                        clearInterval(timer);
-                    }
-                    stat.textContent = Math.floor(current) + '+';
-                }, 20);
-            });
-            statsObserver.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
-
-// Observe about section for stats animation
-const aboutSection = document.querySelector('.about');
-if (aboutSection) {
-    statsObserver.observe(aboutSection);
-}
-
-// Add hover effects to timeline items
-document.querySelectorAll('.timeline-content').forEach(item => {
-    item.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-5px) scale(1.02)';
-    });
-    
-    item.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0) scale(1)';
-    });
-});
-
-// Typing effect for hero title (optional enhancement)
-function typeWriter(element, text, speed = 100) {
-    let i = 0;
-    element.innerHTML = '';
-    
-    function type() {
-        if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
-    }
-    type();
-}
-
-// Initialize typing effect when page loads
-window.addEventListener('load', () => {
-    const heroTitle = document.querySelector('.hero-title');
-    if (heroTitle) {
-        const originalText = heroTitle.textContent;
-        typeWriter(heroTitle, originalText, 50);
-    }
-});
-
-// Add loading animation
-window.addEventListener('load', () => {
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.5s ease-in-out';
-    
-    setTimeout(() => {
-        document.body.style.opacity = '1';
-    }, 100);
-});
-
-// Parallax effect for hero section (subtle)
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        const rate = scrolled * -0.5;
-        hero.style.transform = `translateY(${rate}px)`;
-    }
-});
-
-// Add active state to navigation links based on scroll position
-window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (window.pageYOffset >= sectionTop - 200) {
-            current = section.getAttribute('id');
-        }
-    });
-    
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
-});
-
-// Add CSS for active navigation state
-const style = document.createElement('style');
-style.textContent = `
-    .nav-link.active {
-        color: var(--dark-blue) !important;
-    }
-    .nav-link.active::after {
-        width: 100% !important;
-    }
-    
-    body.dark-mode .nav-link.active {
-        color: var(--cyber-cyan) !important;
-    }
-`;
-document.head.appendChild(style);
 
 // Theme Switcher
 const themeSwitcher = document.querySelector('.theme-switcher i');
@@ -208,9 +58,9 @@ function updateNavbarBackground() {
     const isDarkMode = document.body.classList.contains('dark-mode');
     
     if (window.scrollY > 100) {
-        navbar.style.background = isDarkMode ? 'rgba(10, 10, 31, 0.95)' : 'rgba(255, 255, 255, 0.98)';
+        navbar.style.background = isDarkMode ? 'rgba(17, 24, 39, 0.95)' : 'rgba(255, 255, 255, 0.98)';
     } else {
-        navbar.style.background = isDarkMode ? 'rgba(10, 10, 31, 0.85)' : 'rgba(255, 255, 255, 0.95)';
+        navbar.style.background = isDarkMode ? 'rgba(17, 24, 39, 0.95)' : 'rgba(255, 255, 255, 0.95)';
     }
 }
 
@@ -262,14 +112,14 @@ if (contactForm) {
         
         // Basic validation
         if (!name || !email || !subject || !message) {
-            showNotification('Please fill in all fields.', 'error');
+            alert('Please fill in all fields.');
             return;
         }
         
         // Email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-            showNotification('Please enter a valid email address.', 'error');
+            alert('Please enter a valid email address.');
             return;
         }
         
@@ -289,306 +139,45 @@ if (contactForm) {
             submitBtn.disabled = false;
             
             // Show success message
-            showNotification('Thank you! Your message has been sent successfully. I will get back to you soon.', 'success');
+            alert('Thank you! Your message has been sent successfully. I will get back to you soon.');
         }, 2000);
     });
 }
 
-// Notification system
-function showNotification(message, type = 'info') {
-    // Remove existing notifications
-    const existingNotifications = document.querySelectorAll('.notification');
-    existingNotifications.forEach(notification => notification.remove());
+// Add active state to navigation links based on scroll position
+window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
     
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.innerHTML = `
-        <div class="notification-content">
-            <i class="fas ${getNotificationIcon(type)}"></i>
-            <span>${message}</span>
-            <button class="notification-close">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-    `;
-    
-    // Add to page
-    document.body.appendChild(notification);
-    
-    // Show notification
-    setTimeout(() => {
-        notification.classList.add('show');
-    }, 100);
-    
-    // Auto hide after 5 seconds
-    setTimeout(() => {
-        hideNotification(notification);
-    }, 5000);
-    
-    // Close button functionality
-    const closeBtn = notification.querySelector('.notification-close');
-    closeBtn.addEventListener('click', () => {
-        hideNotification(notification);
-    });
-}
-
-function hideNotification(notification) {
-    notification.classList.remove('show');
-    setTimeout(() => {
-        if (notification.parentNode) {
-            notification.parentNode.removeChild(notification);
-        }
-    }, 300);
-}
-
-function getNotificationIcon(type) {
-    switch (type) {
-        case 'success':
-            return 'fa-check-circle';
-        case 'error':
-            return 'fa-exclamation-circle';
-        case 'warning':
-            return 'fa-exclamation-triangle';
-        default:
-            return 'fa-info-circle';
-    }
-}
-
-// Add notification styles
-const notificationStyles = document.createElement('style');
-notificationStyles.textContent = `
-    .notification {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: var(--white);
-        border-radius: 8px;
-        box-shadow: var(--shadow-lg);
-        padding: 1rem;
-        max-width: 400px;
-        z-index: 10000;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-        border-left: 4px solid var(--dark-blue);
-    }
-    
-    .notification.show {
-        transform: translateX(0);
-    }
-    
-    .notification-success {
-        border-left-color: #10b981;
-    }
-    
-    .notification-error {
-        border-left-color: #ef4444;
-    }
-    
-    .notification-warning {
-        border-left-color: #f59e0b;
-    }
-    
-    .notification-content {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-    }
-    
-    .notification-content i:first-child {
-        font-size: 1.2rem;
-        color: var(--dark-blue);
-    }
-    
-    .notification-success .notification-content i:first-child {
-        color: #10b981;
-    }
-    
-    .notification-error .notification-content i:first-child {
-        color: #ef4444;
-    }
-    
-    .notification-warning .notification-content i:first-child {
-        color: #f59e0b;
-    }
-    
-    .notification-content span {
-        flex: 1;
-        color: var(--dark-gray);
-        font-size: 0.9rem;
-    }
-    
-    .notification-close {
-        background: none;
-        border: none;
-        color: var(--gray);
-        cursor: pointer;
-        padding: 0.25rem;
-        border-radius: 4px;
-        transition: all 0.3s ease;
-    }
-    
-    .notification-close:hover {
-        background: var(--light-gray);
-        color: var(--dark-gray);
-    }
-    
-    body.dark-mode .notification {
-        background: var(--dark-card);
-        border-color: var(--cyber-cyan);
-    }
-    
-    body.dark-mode .notification-success {
-        border-left-color: var(--cyber-green);
-    }
-    
-    body.dark-mode .notification-error {
-        border-left-color: #f87171;
-    }
-    
-    body.dark-mode .notification-warning {
-        border-left-color: #fbbf24;
-    }
-    
-    body.dark-mode .notification-content i:first-child {
-        color: var(--cyber-cyan);
-    }
-    
-    body.dark-mode .notification-success .notification-content i:first-child {
-        color: var(--cyber-green);
-    }
-    
-    body.dark-mode .notification-error .notification-content i:first-child {
-        color: #f87171;
-    }
-    
-    body.dark-mode .notification-warning .notification-content i:first-child {
-        color: #fbbf24;
-    }
-    
-    body.dark-mode .notification-content span {
-        color: var(--dark-text);
-    }
-    
-    body.dark-mode .notification-close {
-        color: var(--dark-text-secondary);
-    }
-    
-    body.dark-mode .notification-close:hover {
-        background: var(--dark-border);
-        color: var(--dark-text);
-    }
-`;
-document.head.appendChild(notificationStyles);
-
-// Skills Section Typing Animation
-function animateSkills() {
-    const skillItems = document.querySelectorAll('.skill-item');
-    const skillPercentages = document.querySelectorAll('.skill-percentage');
-    const skillProgresses = document.querySelectorAll('.skill-progress');
-    
-    // Reset all elements
-    skillItems.forEach(item => {
-        item.classList.remove('animate');
-        item.style.opacity = '0';
-        item.style.transform = 'translateY(20px)';
-    });
-    
-    skillPercentages.forEach(percentage => {
-        percentage.classList.remove('animate');
-        percentage.style.opacity = '0';
-        percentage.style.transform = 'scale(0.8)';
-    });
-    
-    skillProgresses.forEach(progress => {
-        progress.classList.remove('animate');
-        progress.style.width = '0%';
-    });
-    
-    // Animate each skill item sequentially
-    skillItems.forEach((item, index) => {
-        setTimeout(() => {
-            // Animate the skill item
-            item.classList.add('animate');
-            
-            // Animate the percentage after a short delay
-            const percentage = item.querySelector('.skill-percentage');
-            const progress = item.querySelector('.skill-progress');
-            
-            setTimeout(() => {
-                percentage.classList.add('animate');
-                
-                // Animate the progress bar
-                setTimeout(() => {
-                    const targetWidth = progress.getAttribute('style')?.match(/width:\s*(\d+%)/)?.[1] || '0%';
-                    progress.style.setProperty('--progress-width', targetWidth);
-                    progress.classList.add('animate');
-                }, 300);
-                
-            }, 500);
-            
-        }, index * 800); // Delay each item by 800ms
-    });
-}
-
-// Typing effect for skill percentages
-function typePercentage(element, targetPercentage, speed = 100) {
-    let current = 0;
-    const increment = parseInt(targetPercentage) / 20;
-    
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= parseInt(targetPercentage)) {
-            current = parseInt(targetPercentage);
-            clearInterval(timer);
-        }
-        element.textContent = Math.floor(current) + '%';
-    }, speed);
-}
-
-// Enhanced typing effect for skill text
-function typeSkillText(element, text, speed = 50) {
-    let i = 0;
-    element.innerHTML = '';
-    
-    function type() {
-        if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
-    }
-    type();
-}
-
-// Initialize skills animation when skills section comes into view
-const skillsAnimationObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            animateSkills();
-            skillsAnimationObserver.unobserve(entry.target);
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.pageYOffset >= sectionTop - 200) {
+            current = section.getAttribute('id');
         }
     });
-}, {
-    threshold: 0.3,
-    rootMargin: '0px 0px -100px 0px'
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
 });
 
-// Observe skills section
-const skillsSectionElement = document.querySelector('.skills');
-if (skillsSectionElement) {
-    skillsAnimationObserver.observe(skillsSectionElement);
-}
-
-// Re-animate skills when switching themes
-function reanimateSkills() {
-    setTimeout(() => {
-        animateSkills();
-    }, 100);
-}
-
-// Add theme switch listener for re-animation
-const themeSwitcherElement = document.querySelector('.theme-switcher');
-if (themeSwitcherElement) {
-    themeSwitcherElement.addEventListener('click', reanimateSkills);
-}
+// Add CSS for active navigation state
+const style = document.createElement('style');
+style.textContent = `
+    .nav-link.active {
+        color: var(--primary-color) !important;
+    }
+    .nav-link.active::after {
+        width: 100% !important;
+    }
+    
+    body.dark-mode .nav-link.active {
+        color: var(--accent-color) !important;
+    }
+`;
+document.head.appendChild(style);
