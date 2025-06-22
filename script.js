@@ -1,4 +1,3 @@
-
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
@@ -7,13 +6,13 @@ hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('active');
 });
 
-
+// Close mobile menu when clicking on a link
 document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
     hamburger.classList.remove('active');
     navMenu.classList.remove('active');
 }));
 
-
+// Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -27,7 +26,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-
+// Navbar background change on scroll
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     const isDarkMode = document.body.classList.contains('dark-mode');
@@ -49,7 +48,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-
+// Animate skill bars on scroll
 const observerOptions = {
     threshold: 0.5,
     rootMargin: '0px 0px -100px 0px'
@@ -71,13 +70,13 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-
+// Observe skills section
 const skillsSection = document.querySelector('.skills');
 if (skillsSection) {
     observer.observe(skillsSection);
 }
 
-
+// Animate stats on scroll
 const statsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -100,13 +99,13 @@ const statsObserver = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-
+// Observe about section for stats animation
 const aboutSection = document.querySelector('.about');
 if (aboutSection) {
     statsObserver.observe(aboutSection);
 }
 
-
+// Add hover effects to timeline items
 document.querySelectorAll('.timeline-content').forEach(item => {
     item.addEventListener('mouseenter', function() {
         this.style.transform = 'translateY(-5px) scale(1.02)';
@@ -117,7 +116,7 @@ document.querySelectorAll('.timeline-content').forEach(item => {
     });
 });
 
-
+// Typing effect for hero title (optional enhancement)
 function typeWriter(element, text, speed = 100) {
     let i = 0;
     element.innerHTML = '';
@@ -132,6 +131,7 @@ function typeWriter(element, text, speed = 100) {
     type();
 }
 
+// Initialize typing effect when page loads
 window.addEventListener('load', () => {
     const heroTitle = document.querySelector('.hero-title');
     if (heroTitle) {
@@ -140,7 +140,7 @@ window.addEventListener('load', () => {
     }
 });
 
-
+// Add loading animation
 window.addEventListener('load', () => {
     document.body.style.opacity = '0';
     document.body.style.transition = 'opacity 0.5s ease-in-out';
@@ -150,7 +150,7 @@ window.addEventListener('load', () => {
     }, 100);
 });
 
-
+// Parallax effect for hero section (subtle)
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const hero = document.querySelector('.hero');
@@ -160,7 +160,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-
+// Add active state to navigation links based on scroll position
 window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
@@ -182,7 +182,7 @@ window.addEventListener('scroll', () => {
     });
 });
 
-
+// Add CSS for active navigation state
 const style = document.createElement('style');
 style.textContent = `
     .nav-link.active {
@@ -198,7 +198,7 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-
+// Theme Switcher
 const themeSwitcher = document.querySelector('.theme-switcher i');
 const body = document.body;
 
@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-
+// Contact Form Handling
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
@@ -258,41 +258,44 @@ if (contactForm) {
         const email = formData.get('email');
         const subject = formData.get('subject');
         const message = formData.get('message');
-      
+        
+        // Basic validation
         if (!name || !email || !subject || !message) {
             showNotification('Please fill in all fields.', 'error');
             return;
         }
         
-       
+        // Email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             showNotification('Please enter a valid email address.', 'error');
             return;
         }
-       
+        
+        // Show loading state
         const submitBtn = this.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitBtn.disabled = true;
         
-       
+        // Simulate form submission (replace with actual email service)
         setTimeout(() => {
-           
+            // Reset form
             this.reset();
             
-      
+            // Reset button
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
             
+            // Show success message
             showNotification('Thank you! Your message has been sent successfully. I will get back to you soon.', 'success');
         }, 2000);
     });
 }
 
-
+// Notification system
 function showNotification(message, type = 'info') {
-   
+    // Remove existing notifications
     const existingNotifications = document.querySelectorAll('.notification');
     existingNotifications.forEach(notification => notification.remove());
     
@@ -309,19 +312,20 @@ function showNotification(message, type = 'info') {
         </div>
     `;
     
- 
+    // Add to page
     document.body.appendChild(notification);
- 
+    
+    // Show notification
     setTimeout(() => {
         notification.classList.add('show');
     }, 100);
     
-    
+    // Auto hide after 5 seconds
     setTimeout(() => {
         hideNotification(notification);
     }, 5000);
     
-    
+    // Close button functionality
     const closeBtn = notification.querySelector('.notification-close');
     closeBtn.addEventListener('click', () => {
         hideNotification(notification);
