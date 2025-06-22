@@ -49,33 +49,33 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Animate skill bars on scroll
-const observerOptions = {
-    threshold: 0.5,
-    rootMargin: '0px 0px -100px 0px'
-};
+// Animate skill bars on scroll - REMOVED OLD OBSERVER
+// const observerOptions = {
+//     threshold: 0.5,
+//     rootMargin: '0px 0px -100px 0px'
+// };
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const skillBars = entry.target.querySelectorAll('.skill-progress');
-            skillBars.forEach(bar => {
-                const width = bar.style.width;
-                bar.style.width = '0%';
-                setTimeout(() => {
-                    bar.style.width = width;
-                }, 100);
-            });
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
+// const observer = new IntersectionObserver((entries) => {
+//     entries.forEach(entry => {
+//         if (entry.isIntersecting) {
+//             const skillBars = entry.target.querySelectorAll('.skill-progress');
+//             skillBars.forEach(bar => {
+//                 const width = bar.style.width;
+//                 bar.style.width = '0%';
+//                 setTimeout(() => {
+//                     bar.style.width = width;
+//                 }, 100);
+//             });
+//             observer.unobserve(entry.target);
+//         }
+//     });
+// }, observerOptions);
 
-// Observe skills section
-const skillsSection = document.querySelector('.skills');
-if (skillsSection) {
-    observer.observe(skillsSection);
-}
+// Observe skills section - REMOVED OLD OBSERVER
+// const skillsSection = document.querySelector('.skills');
+// if (skillsSection) {
+//     observer.observe(skillsSection);
+// }
 
 // Animate stats on scroll
 const statsObserver = new IntersectionObserver((entries) => {
@@ -520,8 +520,8 @@ function animateSkills() {
                 
                 // Animate the progress bar
                 setTimeout(() => {
-                    const width = progress.style.width || '0%';
-                    progress.style.setProperty('--progress-width', width);
+                    const targetWidth = progress.getAttribute('style')?.match(/width:\s*(\d+%)/)?.[1] || '0%';
+                    progress.style.setProperty('--progress-width', targetWidth);
                     progress.classList.add('animate');
                 }, 300);
                 
