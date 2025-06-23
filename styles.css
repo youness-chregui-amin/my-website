@@ -1,4 +1,4 @@
-/* Reset and Base Styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -9,6 +9,8 @@
     --primary-color: #2563eb;
     --secondary-color: #1e40af;
     --accent-color: #3b82f6;
+    --sky-blue: #38bdf8;
+    --light-green: #6ee7b7;
     --text-color: #1f2937;
     --text-light: #6b7280;
     --background: #ffffff;
@@ -39,6 +41,7 @@ body {
     background-color: var(--background);
     transition: background-color 0.3s, color 0.3s;
     overflow-x: hidden;
+    background: linear-gradient(135deg, var(--sky-blue) 0%, var(--background-light) 60%, var(--light-green) 100%);
 }
 
 body.dark-mode {
@@ -52,7 +55,7 @@ body.dark-mode {
     padding: 0 1rem;
 }
 
-/* Navigation */
+
 .navbar {
     position: fixed;
     top: 0;
@@ -197,10 +200,10 @@ body.dark-mode .theme-switcher:hover {
     text-shadow: 0 0 10px rgba(255, 0, 229, 0.5);
 }
 
-/* Hero Section */
+
 .hero {
     padding: 120px 0 80px;
-    background: linear-gradient(135deg, var(--background-light) 0%, var(--background) 100%);
+    background: linear-gradient(120deg, var(--sky-blue) 0%, var(--background) 60%, var(--light-green) 100%);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -256,8 +259,7 @@ body.dark-mode .hero-title {
 }
 
 .highlight {
-    color: var(--primary-color);
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    background: linear-gradient(135deg, var(--sky-blue), var(--light-green));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -337,14 +339,14 @@ body.dark-mode .hero-description {
 }
 
 .btn-primary {
-    background: var(--primary-color);
+    background: linear-gradient(90deg, var(--sky-blue), var(--primary-color));
     color: white;
+    box-shadow: 0 4px 20px rgba(56, 189, 248, 0.15);
 }
 
 .btn-primary:hover {
-    background: var(--secondary-color);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+    background: linear-gradient(90deg, var(--light-green), var(--sky-blue));
+    box-shadow: 0 8px 30px rgba(110, 231, 183, 0.18);
 }
 
 body.dark-mode .btn-primary {
@@ -357,15 +359,15 @@ body.dark-mode .btn-primary:hover {
 }
 
 .btn-secondary {
+    color: var(--sky-blue);
+    border: 2px solid var(--sky-blue);
     background: transparent;
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
 }
 
 .btn-secondary:hover {
-    background: var(--primary-color);
-    color: white;
-    transform: translateY(-2px);
+    background: var(--light-green);
+    color: var(--secondary-color);
+    border-color: var(--light-green);
 }
 
 body.dark-mode .btn-secondary {
@@ -409,7 +411,7 @@ body.dark-mode .profile-photo {
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--primary-color));
+    background: linear-gradient(45deg, var(--sky-blue), var(--light-green), var(--primary-color));
     border-radius: 50%;
     z-index: -1;
     animation: rotate 3s linear infinite;
@@ -427,7 +429,7 @@ body.dark-mode .profile-photo::before {
     border-radius: 50%;
 }
 
-/* Floating Logos */
+
 .floating-logos {
     position: absolute;
     top: 0;
@@ -441,14 +443,14 @@ body.dark-mode .profile-photo::before {
     position: absolute;
     width: 30px;
     height: 30px;
-    background: var(--background);
+    background: linear-gradient(135deg, var(--sky-blue) 60%, var(--light-green) 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: var(--shadow);
     animation: orbit 20s linear infinite;
-    border: 2px solid var(--primary-color);
+    border: 2px solid var(--sky-blue);
 }
 
 body.dark-mode .floating-logo {
@@ -532,7 +534,6 @@ body.dark-mode .floating-logo:hover {
     box-shadow: 0 0 25px rgba(0, 246, 255, 0.6);
 }
 
-/* Sections */
 section {
     padding: 80px 0;
 }
@@ -557,7 +558,7 @@ body.dark-mode .section-title {
     display: block;
     width: 60px;
     height: 4px;
-    background: var(--primary-color);
+    background: linear-gradient(90deg, var(--sky-blue), var(--light-green));
     margin: 1rem auto 0;
     border-radius: 2px;
 }
@@ -567,7 +568,6 @@ body.dark-mode .section-title::after {
     box-shadow: 0 0 15px rgba(0, 246, 255, 0.5);
 }
 
-/* About Section */
 .about {
     background: var(--background-light);
 }
@@ -629,7 +629,7 @@ body.dark-mode .stat:hover {
 .stat h3 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--sky-blue);
     margin-bottom: 0.5rem;
     font-family: 'Orbitron', monospace;
 }
@@ -649,7 +649,6 @@ body.dark-mode .stat p {
     color: var(--dark-text-secondary);
 }
 
-/* Experience Section */
 .timeline {
     position: relative;
     max-width: 800px;
@@ -791,7 +790,6 @@ body.dark-mode .timeline-content p {
     color: var(--dark-text-secondary);
 }
 
-/* Skills Section */
 .skills {
     background: var(--background-light);
 }
@@ -959,7 +957,7 @@ body.dark-mode .skill-progress {
     background: linear-gradient(90deg, var(--cyber-pink), var(--cyber-cyan));
 }
 
-/* Projects Section */
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -984,7 +982,7 @@ body.dark-mode .skill-progress {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    background: linear-gradient(90deg, var(--sky-blue), var(--light-green));
     transition: all 0.3s ease;
 }
 
@@ -1015,7 +1013,7 @@ body.dark-mode .project-card:hover {
 .project-icon {
     width: 60px;
     height: 60px;
-    background: var(--primary-color);
+    background: linear-gradient(135deg, var(--sky-blue), var(--light-green));
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -1287,7 +1285,7 @@ body.dark-mode .form-group textarea::placeholder {
 .social-link {
     width: 50px;
     height: 50px;
-    background: var(--primary-color);
+    background: linear-gradient(135deg, var(--sky-blue), var(--light-green));
     color: white;
     border-radius: 50%;
     display: flex;
@@ -1296,12 +1294,12 @@ body.dark-mode .form-group textarea::placeholder {
     text-decoration: none;
     font-size: 1.2rem;
     transition: transform 0.3s ease;
-    box-shadow: var(--shadow);
+    box-shadow: 0 2px 10px rgba(56, 189, 248, 0.12);
 }
 
 .social-link:hover {
-    transform: translateY(-3px) scale(1.1);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 6px 20px rgba(110, 231, 183, 0.18);
+    transform: translateY(-3px) scale(1.1) rotate(-2deg);
 }
 
 body.dark-mode .social-link {
