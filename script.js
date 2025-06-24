@@ -77,6 +77,7 @@ const statsObserver = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
+
 const aboutSection = document.querySelector('.about');
 if (aboutSection) {
     statsObserver.observe(aboutSection);
@@ -105,16 +106,6 @@ if (skillsSection) {
     skillsObserver.observe(skillsSection);
 }
 
-
-document.querySelectorAll('.timeline-content').forEach(item => {
-    item.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-5px)';
-    });
-    
-    item.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
-    });
-});
 
 
 const themeSwitcher = document.querySelector('.theme-switcher i');
@@ -164,26 +155,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-      
+        
         const formData = new FormData(this);
         const name = formData.get('name');
         const email = formData.get('email');
         const subject = formData.get('subject');
         const message = formData.get('message');
         
-       
+        
         if (!name || !email || !subject || !message) {
             alert('Please fill in all fields.');
             return;
         }
         
-     
+       
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             alert('Please enter a valid email address.');
@@ -198,13 +188,13 @@ if (contactForm) {
         
        
         setTimeout(() => {
-          
+         
             this.reset();
             
-         
+           
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
-            
+         
             alert('Thank you! Your message has been sent successfully. I will get back to you soon.');
         }, 2000);
     });
@@ -291,3 +281,113 @@ window.addEventListener('load', () => {
         typeWriter(heroTitle, originalText, 50);
     }
 });
+
+
+(function() {
+    const canvas = document.getElementById('bg-particles');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    const PARTICLE_COUNT = 32;
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+
+    function randomBetween(a, b) {
+        return a + Math.random() * (b - a);
+    }
+
+    function createParticles() {
+        particles = [];
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+            const size = randomBetween(24, 64);
+            particles.push({
+                x: randomBetween(0, width),
+                y: randomBetween(0, height),
+                baseY: 0,
+                size,
+                speed: randomBetween(0.1, 0.5),
+                drift: randomBetween(-0.2, 0.2),
+                shape: Math.random() > 0.5 ? 'circle' : 'polygon',
+                sides: Math.floor(randomBetween(5, 8)),
+                angle: randomBetween(0, Math.PI * 2),
+                opacity: randomBetween(0.08, 0.18)
+            });
+        }
+    }
+
+    function getColors() {
+        const isDark = document.body.classList.contains('dark-mode');
+        if (isDark) {
+            return [
+                'rgba(0,246,255,0.18)', 
+                'rgba(255,0,229,0.13)', 
+                'rgba(57,255,20,0.10)', 
+                'rgba(138,43,226,0.10)' 
+            ];
+        } else {
+            return [
+                'rgba(56,189,248,0.13)', 
+                'rgba(110,231,183,0.10)', 
+                'rgba(59,130,246,0.10)', 
+                'rgba(37,99,235,0.10)' 
+            ];
+        }
+    }
+
+    function resizeCanvas() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+        createParticles();
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, width, height);
+        const colors = getColors();
+        const scrollY = window.scrollY;
+        for (let i = 0; i < particles.length; i++) {
+            const p = particles[i];
+           
+            const y = p.y + (scrollY * p.speed * 0.3);
+            ctx.save();
+            ctx.globalAlpha = p.opacity;
+            ctx.translate(p.x, y);
+            ctx.rotate(p.angle + (scrollY * 0.0005));
+            ctx.beginPath();
+            if (p.shape === 'circle') {
+                ctx.arc(0, 0, p.size, 0, Math.PI * 2);
+            } else {
+                
+                const sides = p.sides;
+                for (let j = 0; j < sides; j++) {
+                    const theta = (Math.PI * 2 / sides) * j;
+                    const px = Math.cos(theta) * p.size;
+                    const py = Math.sin(theta) * p.size;
+                    if (j === 0) ctx.moveTo(px, py);
+                    else ctx.lineTo(px, py);
+                }
+                ctx.closePath();
+            }
+            ctx.fillStyle = colors[i % colors.length];
+            ctx.shadowColor = colors[i % colors.length];
+            ctx.shadowBlur = 16;
+            ctx.fill();
+            ctx.restore();
+        }
+    }
+
+    function animate() {
+        draw();
+        requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('scroll', draw);
+ 
+    const observer = new MutationObserver(draw);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+    resizeCanvas();
+    animate();
+})();
