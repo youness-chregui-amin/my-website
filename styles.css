@@ -1,4 +1,4 @@
-
+/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -19,7 +19,7 @@
     --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     
-   
+    /* Dark mode colors */
     --dark-bg: #0a0a0f;
     --dark-card: #1a1a2e;
     --dark-text: #e0e0e0;
@@ -45,7 +45,7 @@ body {
 }
 
 body.dark-mode {
-    background-color: var(--dark-bg) !important;
+    background: var(--dark-bg) !important;
     color: var(--dark-text) !important;
 }
 
@@ -55,7 +55,7 @@ body.dark-mode {
     padding: 0 1rem;
 }
 
-
+/* Navigation */
 .navbar {
     position: fixed;
     top: 0;
@@ -200,7 +200,7 @@ body.dark-mode .theme-switcher:hover {
     text-shadow: 0 0 10px rgba(255, 0, 229, 0.5);
 }
 
-
+/* Hero Section */
 .hero {
     padding: 120px 0 80px;
     background: linear-gradient(120deg, var(--sky-blue) 0%, var(--background) 60%, var(--light-green) 100%);
@@ -429,7 +429,7 @@ body.dark-mode .profile-photo::before {
     border-radius: 50%;
 }
 
-
+/* Floating Logos */
 .floating-logos {
     position: absolute;
     top: 0;
@@ -534,7 +534,7 @@ body.dark-mode .floating-logo:hover {
     box-shadow: 0 0 25px rgba(0, 246, 255, 0.6);
 }
 
-
+/* Sections */
 section {
     padding: 80px 0;
 }
@@ -569,7 +569,7 @@ body.dark-mode .section-title::after {
     box-shadow: 0 0 15px rgba(0, 246, 255, 0.5);
 }
 
-
+/* About Section */
 .about {
     background: var(--background-light);
 }
@@ -651,7 +651,7 @@ body.dark-mode .stat p {
     color: var(--dark-text-secondary);
 }
 
-
+/* Vibrant icons for About, Experience, and Skills */
 .about-stats .stat h3,
 .about-stats .stat p {
     display: flex;
@@ -671,7 +671,7 @@ body.dark-mode .about-stats .stat i {
     text-shadow: 0 0 10px var(--cyber-cyan), 0 0 20px var(--cyber-pink);
 }
 
-
+/* Experience Section */
 .timeline {
     position: relative;
     max-width: 800px;
@@ -823,7 +823,7 @@ body.dark-mode .timeline-content h4 i {
     text-shadow: 0 0 8px var(--cyber-cyan), 0 0 16px var(--cyber-pink);
 }
 
-
+/* Skills Section */
 .skills {
     background: var(--background-light);
 }
@@ -999,7 +999,7 @@ body.dark-mode .skill-progress {
     background: linear-gradient(90deg, var(--cyber-pink), var(--cyber-cyan));
 }
 
-
+/* Projects Section */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1135,7 +1135,7 @@ body.dark-mode .tag:hover {
     box-shadow: 0 0 15px rgba(0, 246, 255, 0.3);
 }
 
-
+/* Contact Section */
 .contact {
     background: var(--background-light);
 }
@@ -1354,7 +1354,7 @@ body.dark-mode .social-link:hover {
     box-shadow: 0 0 30px rgba(0, 246, 255, 0.6);
 }
 
-
+/* Footer */
 .footer {
     background: var(--text-color);
     color: white;
@@ -1369,6 +1369,7 @@ body.dark-mode .footer {
     box-shadow: 0 -4px 20px rgba(0, 246, 255, 0.2);
 }
 
+/* Mobile Responsive */
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
@@ -1490,85 +1491,4 @@ body.dark-mode .footer {
         height: 20px;
         font-size: 0.8rem;
     }
-}
-
-
-body.dark-mode .about,
-body.dark-mode .skills,
-body.dark-mode .projects,
-body.dark-mode .contact,
-body.dark-mode .footer {
-    background: var(--dark-card) !important;
-    color: var(--dark-text) !important;
-    border-color: var(--dark-border) !important;
-}
-body.dark-mode .timeline-content,
-body.dark-mode .stat,
-body.dark-mode .skill-item,
-body.dark-mode .project-card,
-body.dark-mode .contact-item {
-    background: var(--dark-bg) !important;
-    color: var(--dark-text) !important;
-    border-color: var(--dark-border) !important;
-}
-body.dark-mode .timeline-content h3,
-body.dark-mode .timeline-content h4,
-body.dark-mode .stat h3,
-body.dark-mode .stat p,
-body.dark-mode .skill-category h3,
-body.dark-mode .project-card h3,
-body.dark-mode .contact-item h4,
-body.dark-mode .contact-item p {
-    color: var(--cyber-cyan) !important;
-    text-shadow: 0 0 10px var(--cyber-cyan), 0 0 20px var(--cyber-pink);
-}
-body.dark-mode .timeline-date {
-    color: var(--cyber-green) !important;
-    text-shadow: 0 0 8px var(--cyber-green);
-}
-body.dark-mode .tag {
-    background: var(--dark-bg) !important;
-    color: var(--cyber-cyan) !important;
-    border: 1px solid var(--cyber-cyan) !important;
-}
-body.dark-mode .section-title {
-    color: var(--cyber-cyan) !important;
-    text-shadow: 0 0 20px var(--cyber-cyan);
-}
-body.dark-mode .section-title::after {
-    background: linear-gradient(90deg, var(--cyber-pink), var(--cyber-cyan)) !important;
-    box-shadow: 0 0 15px var(--cyber-cyan) !important;
-}
-body.dark-mode .form-group input,
-body.dark-mode .form-group textarea {
-    background: var(--dark-bg) !important;
-    color: var(--dark-text) !important;
-    border-color: var(--dark-border) !important;
-}
-body.dark-mode .form-group input::placeholder,
-body.dark-mode .form-group textarea::placeholder {
-    color: var(--dark-text-secondary) !important;
-}
-body.dark-mode .btn-primary {
-    background: linear-gradient(135deg, var(--cyber-pink), var(--cyber-cyan)) !important;
-    color: #fff !important;
-    box-shadow: 0 0 20px var(--cyber-pink);
-}
-body.dark-mode .btn-secondary {
-    color: var(--cyber-cyan) !important;
-    border-color: var(--cyber-cyan) !important;
-}
-body.dark-mode .btn-secondary:hover {
-    background: var(--cyber-cyan) !important;
-    color: var(--dark-bg) !important;
-}
-body.dark-mode .social-link {
-    background: linear-gradient(135deg, var(--cyber-pink), var(--cyber-cyan)) !important;
-    color: #fff !important;
-    box-shadow: 0 0 20px var(--cyber-cyan);
-}
-body.dark-mode .footer {
-    background: var(--dark-bg) !important;
-    border-top: 1px solid var(--cyber-cyan) !important;
-    box-shadow: 0 -4px 20px var(--cyber-cyan) !important;
 }
