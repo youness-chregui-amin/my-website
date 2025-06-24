@@ -160,7 +160,7 @@ if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-      
+     
         const formData = new FormData(this);
         const name = formData.get('name');
         const email = formData.get('email');
@@ -173,28 +173,29 @@ if (contactForm) {
             return;
         }
         
-       
+     
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             alert('Please enter a valid email address.');
             return;
         }
         
-      
+       
         const submitBtn = this.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitBtn.disabled = true;
         
-       
+      
         setTimeout(() => {
-          
+            
             this.reset();
             
           
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
-           
+            
+            
             alert('Thank you! Your message has been sent successfully. I will get back to you soon.');
         }, 2000);
     });
@@ -321,8 +322,8 @@ window.addEventListener('load', () => {
             return [
                 'rgba(0,246,255,0.18)', 
                 'rgba(255,0,229,0.13)', 
-                'rgba(57,255,20,0.10)', 
-                'rgba(138,43,226,0.10)' 
+                'rgba(57,255,20,0.10)',
+                'rgba(138,43,226,0.10)'
             ];
         } else {
             return [
@@ -384,7 +385,7 @@ window.addEventListener('load', () => {
 
     window.addEventListener('resize', resizeCanvas);
     window.addEventListener('scroll', draw);
-    
+   
     const observer = new MutationObserver(draw);
     observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
 
