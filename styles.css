@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -18,7 +19,7 @@
     --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     
-    
+   
     --dark-bg: #0a0a0f;
     --dark-card: #1a1a2e;
     --dark-text: #e0e0e0;
@@ -44,8 +45,8 @@ body {
 }
 
 body.dark-mode {
-    background-color: var(--dark-bg);
-    color: var(--dark-text);
+    background-color: var(--dark-bg) !important;
+    color: var(--dark-text) !important;
 }
 
 .container {
@@ -728,10 +729,10 @@ body.dark-mode .timeline::before {
 }
 
 body.dark-mode .timeline-content {
-    background: var(--dark-bg) !important;
-    border-color: var(--dark-border) !important;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
-    color: var(--dark-text) !important;
+    background: var(--dark-bg);
+    color: var(--dark-text);
+    border-color: var(--dark-border);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 .timeline-content::before {
@@ -921,14 +922,24 @@ body.dark-mode .skill-item:hover {
 
 .skill-name span:first-child i {
     color: var(--primary-color);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    animation: float 3s ease-in-out infinite;
     margin-right: 0.3rem;
     vertical-align: middle;
-    transition: color 0.3s, text-shadow 0.3s;
+    transition: color 0.3s;
+    text-shadow: none;
 }
 body.dark-mode .skill-name span:first-child i {
     color: var(--cyber-pink);
-    text-shadow: 0 0 8px var(--cyber-cyan), 0 0 16px var(--cyber-green);
+    text-shadow: none;
+}
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
 }
 
 .skill-percentage {
@@ -1027,10 +1038,10 @@ body.dark-mode .skill-progress {
 }
 
 body.dark-mode .project-card {
-    background: var(--dark-bg) !important;
-    border-color: var(--dark-border) !important;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
-    color: var(--dark-text) !important;
+    background: var(--dark-bg);
+    color: var(--dark-text);
+    border-color: var(--dark-border);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 body.dark-mode .project-card::before {
@@ -1358,7 +1369,6 @@ body.dark-mode .footer {
     box-shadow: 0 -4px 20px rgba(0, 246, 255, 0.2);
 }
 
-
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
@@ -1510,9 +1520,11 @@ body.dark-mode .project-card h3,
 body.dark-mode .contact-item h4,
 body.dark-mode .contact-item p {
     color: var(--cyber-cyan) !important;
+    text-shadow: 0 0 10px var(--cyber-cyan), 0 0 20px var(--cyber-pink);
 }
 body.dark-mode .timeline-date {
     color: var(--cyber-green) !important;
+    text-shadow: 0 0 8px var(--cyber-green);
 }
 body.dark-mode .tag {
     background: var(--dark-bg) !important;
@@ -1521,10 +1533,11 @@ body.dark-mode .tag {
 }
 body.dark-mode .section-title {
     color: var(--cyber-cyan) !important;
+    text-shadow: 0 0 20px var(--cyber-cyan);
 }
 body.dark-mode .section-title::after {
     background: linear-gradient(90deg, var(--cyber-pink), var(--cyber-cyan)) !important;
-    box-shadow: 0 0 15px rgba(0, 246, 255, 0.5) !important;
+    box-shadow: 0 0 15px var(--cyber-cyan) !important;
 }
 body.dark-mode .form-group input,
 body.dark-mode .form-group textarea {
@@ -1539,6 +1552,7 @@ body.dark-mode .form-group textarea::placeholder {
 body.dark-mode .btn-primary {
     background: linear-gradient(135deg, var(--cyber-pink), var(--cyber-cyan)) !important;
     color: #fff !important;
+    box-shadow: 0 0 20px var(--cyber-pink);
 }
 body.dark-mode .btn-secondary {
     color: var(--cyber-cyan) !important;
@@ -1551,9 +1565,10 @@ body.dark-mode .btn-secondary:hover {
 body.dark-mode .social-link {
     background: linear-gradient(135deg, var(--cyber-pink), var(--cyber-cyan)) !important;
     color: #fff !important;
+    box-shadow: 0 0 20px var(--cyber-cyan);
 }
 body.dark-mode .footer {
     background: var(--dark-bg) !important;
     border-top: 1px solid var(--cyber-cyan) !important;
-    box-shadow: 0 -4px 20px rgba(0, 246, 255, 0.2) !important;
+    box-shadow: 0 -4px 20px var(--cyber-cyan) !important;
 }
