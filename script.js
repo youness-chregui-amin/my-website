@@ -107,7 +107,6 @@ if (skillsSection) {
 }
 
 
-
 const themeSwitcher = document.querySelector('.theme-switcher i');
 const body = document.body;
 
@@ -155,19 +154,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        
+      
         const formData = new FormData(this);
         const name = formData.get('name');
         const email = formData.get('email');
         const subject = formData.get('subject');
         const message = formData.get('message');
         
-        
+      
         if (!name || !email || !subject || !message) {
             alert('Please fill in all fields.');
             return;
@@ -180,7 +180,7 @@ if (contactForm) {
             return;
         }
         
-       
+      
         const submitBtn = this.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
@@ -188,13 +188,13 @@ if (contactForm) {
         
        
         setTimeout(() => {
-         
+          
             this.reset();
             
-           
+          
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
-         
+           
             alert('Thank you! Your message has been sent successfully. I will get back to you soon.');
         }, 2000);
     });
@@ -348,7 +348,7 @@ window.addEventListener('load', () => {
         const scrollY = window.scrollY;
         for (let i = 0; i < particles.length; i++) {
             const p = particles[i];
-           
+         
             const y = p.y + (scrollY * p.speed * 0.3);
             ctx.save();
             ctx.globalAlpha = p.opacity;
@@ -358,7 +358,7 @@ window.addEventListener('load', () => {
             if (p.shape === 'circle') {
                 ctx.arc(0, 0, p.size, 0, Math.PI * 2);
             } else {
-                
+              
                 const sides = p.sides;
                 for (let j = 0; j < sides; j++) {
                     const theta = (Math.PI * 2 / sides) * j;
@@ -384,7 +384,7 @@ window.addEventListener('load', () => {
 
     window.addEventListener('resize', resizeCanvas);
     window.addEventListener('scroll', draw);
- 
+    
     const observer = new MutationObserver(draw);
     observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
 
