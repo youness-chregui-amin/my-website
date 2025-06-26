@@ -1,8 +1,8 @@
-My Personal Portfolio
+#My Personal Portfolio
 
 A modern and responsive website showcasing my professional profile, built with HTML, CSS, and JavaScript. It features a sleek design with a professional color palette: dark blue, light sky blue, and light green.
 
-Features
+#Features
 
 Responsive Design: Seamlessly adapts to desktops, tablets, and smartphones.
 
