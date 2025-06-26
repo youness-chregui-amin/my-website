@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -198,6 +199,7 @@ body.dark-mode .theme-switcher:hover {
     color: var(--cyber-pink);
     text-shadow: 0 0 10px rgba(255, 0, 229, 0.5);
 }
+
 
 .hero {
     padding: 120px 0 80px;
@@ -427,7 +429,7 @@ body.dark-mode .profile-photo::before {
     border-radius: 50%;
 }
 
-/* Floating Logos */
+
 .floating-logos {
     position: absolute;
     top: 0;
@@ -1293,6 +1295,7 @@ body.dark-mode .social-link {
 body.dark-mode .social-link:hover {
     box-shadow: 0 0 30px rgba(0, 246, 255, 0.6);
 }
+
 
 .footer {
     background: var(--text-color);
