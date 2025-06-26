@@ -1,4 +1,4 @@
-/* Reset and Base Styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -19,7 +19,7 @@
     --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     
-    /* Dark mode colors */
+  
     --dark-bg: #0a0a0f;
     --dark-card: #1a1a2e;
     --dark-text: #e0e0e0;
@@ -55,7 +55,7 @@ body.dark-mode {
     padding: 0 1rem;
 }
 
-/* Navigation */
+
 .navbar {
     position: fixed;
     top: 0;
@@ -200,7 +200,6 @@ body.dark-mode .theme-switcher:hover {
     text-shadow: 0 0 10px rgba(255, 0, 229, 0.5);
 }
 
-/* Hero Section */
 .hero {
     padding: 120px 0 80px;
     background: linear-gradient(120deg, var(--sky-blue) 0%, var(--background) 60%, var(--light-green) 100%);
@@ -534,7 +533,7 @@ body.dark-mode .floating-logo:hover {
     box-shadow: 0 0 25px rgba(0, 246, 255, 0.6);
 }
 
-/* Sections */
+
 section {
     padding: 80px 0;
 }
@@ -569,7 +568,7 @@ body.dark-mode .section-title::after {
     box-shadow: 0 0 15px rgba(0, 246, 255, 0.5);
 }
 
-/* About Section */
+
 .about {
     background: var(--background-light);
 }
@@ -651,7 +650,7 @@ body.dark-mode .stat p {
     color: var(--dark-text-secondary);
 }
 
-/* Vibrant icons for About, Experience, and Skills */
+
 .about-stats .stat h3,
 .about-stats .stat p {
     display: flex;
@@ -671,7 +670,7 @@ body.dark-mode .about-stats .stat i {
     text-shadow: 0 0 10px var(--cyber-cyan), 0 0 20px var(--cyber-pink);
 }
 
-/* --- Professional Experience (Learning Journey) Section --- */
+
 .timeline {
     position: relative;
     max-width: 900px;
@@ -765,7 +764,7 @@ body.dark-mode .timeline-content p {
     color: var(--dark-text-secondary);
 }
 
-/* Skills Section */
+
 .skills {
     background: var(--background-light);
 }
@@ -941,7 +940,7 @@ body.dark-mode .skill-progress {
     background: linear-gradient(90deg, var(--cyber-pink), var(--cyber-cyan));
 }
 
-/* Projects Section */
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1077,7 +1076,7 @@ body.dark-mode .tag:hover {
     box-shadow: 0 0 15px rgba(0, 246, 255, 0.3);
 }
 
-/* Contact Section */
+
 .contact {
     background: var(--background-light);
 }
@@ -1296,7 +1295,6 @@ body.dark-mode .social-link:hover {
     box-shadow: 0 0 30px rgba(0, 246, 255, 0.6);
 }
 
-/* Footer */
 .footer {
     background: var(--text-color);
     color: white;
@@ -1311,7 +1309,7 @@ body.dark-mode .footer {
     box-shadow: 0 -4px 20px rgba(0, 246, 255, 0.2);
 }
 
-/* Mobile Responsive */
+
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
@@ -1435,7 +1433,7 @@ body.dark-mode .footer {
     }
 }
 
-/* --- Simplified Cyberpunk Dark Mode for Ghost-Recon Project Card --- */
+
 body.dark-mode .ghost-recon-card {
     background: var(--dark-card) !important;
     color: var(--dark-text) !important;
@@ -1486,7 +1484,7 @@ body.dark-mode .ghost-recon-card .project-icon i {
     box-shadow: 0 0 24px var(--cyber-cyan);
 }
 
-/* Bottom animated visual styles */
+
 #bottom-svg-visual-container {
     position: fixed;
     left: 0; right: 0; bottom: 0;
@@ -1517,12 +1515,12 @@ body.dark-mode {
     --cyber-pink: #ff4ecd;
     --cyber-green: #39ff14;
 }
-/* Ensure main content is above the visual */
+
 main, .main-content, #content, .content {
     position: relative;
     z-index: 1;
 }
-/* Responsive adjustment for very small screens */
+
 @media (max-width: 600px) {
     #bottom-svg-visual-container, #bottom-svg-visual {
         height: 48px;
