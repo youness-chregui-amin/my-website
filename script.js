@@ -1,4 +1,4 @@
-// Mobile Navigation Toggle
+
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
@@ -7,13 +7,13 @@ hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('active');
 });
 
-// Close mobile menu when clicking on a link
+
 document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
     hamburger.classList.remove('active');
     navMenu.classList.remove('active');
 }));
 
-// Smooth scrolling for navigation links
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -27,7 +27,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar background change on scroll
+
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     const isDarkMode = document.body.classList.contains('dark-mode');
@@ -49,7 +49,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Animate stats on scroll
 const observerOptions = {
     threshold: 0.5,
     rootMargin: '0px 0px -100px 0px'
@@ -77,13 +76,13 @@ const statsObserver = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe about section for stats animation
+
 const aboutSection = document.querySelector('.about');
 if (aboutSection) {
     statsObserver.observe(aboutSection);
 }
 
-// Animate skill bars on scroll
+
 const skillsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -100,24 +99,13 @@ const skillsObserver = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe skills section
+
 const skillsSection = document.querySelector('.skills');
 if (skillsSection) {
     skillsObserver.observe(skillsSection);
 }
+ranslateY(-5px)';
 
-// Add hover effects to timeline items
-// document.querySelectorAll('.timeline-content').forEach(item => {
-//     item.addEventListener('mouseenter', function() {
-//         this.style.transform = 'translateY(-5px)';
-//     });
-//     
-//     item.addEventListener('mouseleave', function() {
-//         this.style.transform = 'translateY(0)';
-//     });
-// });
-
-// Theme Switcher
 const themeSwitcher = document.querySelector('.theme-switcher i');
 const body = document.body;
 
@@ -165,54 +153,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Contact Form Handling
+
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Get form data
+      
         const formData = new FormData(this);
         const name = formData.get('name');
         const email = formData.get('email');
         const subject = formData.get('subject');
         const message = formData.get('message');
         
-        // Basic validation
+      
         if (!name || !email || !subject || !message) {
             alert('Please fill in all fields.');
             return;
         }
         
-        // Email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             alert('Please enter a valid email address.');
             return;
         }
-        
-        // Show loading state
+       
         const submitBtn = this.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitBtn.disabled = true;
         
-        // Simulate form submission (replace with actual email service)
+        
         setTimeout(() => {
-            // Reset form
+          
             this.reset();
             
-            // Reset button
+          
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
             
-            // Show success message
+            
             alert('Thank you! Your message has been sent successfully. I will get back to you soon.');
         }, 2000);
     });
 }
 
-// Add active state to navigation links based on scroll position
+
 window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
@@ -234,7 +220,7 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Add CSS for active navigation state
+
 const style = document.createElement('style');
 style.textContent = `
     .nav-link.active {
@@ -250,7 +236,7 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Add loading animation
+
 window.addEventListener('load', () => {
     document.body.style.opacity = '0';
     document.body.style.transition = 'opacity 0.5s ease-in-out';
@@ -260,7 +246,7 @@ window.addEventListener('load', () => {
     }, 100);
 });
 
-// Add parallax effect for hero section (subtle)
+
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const hero = document.querySelector('.hero');
@@ -270,7 +256,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Add typing effect for hero title
+
 function typeWriter(element, text, speed = 100) {
     let i = 0;
     element.innerHTML = '';
@@ -285,7 +271,7 @@ function typeWriter(element, text, speed = 100) {
     type();
 }
 
-// Initialize typing effect when page loads
+
 window.addEventListener('load', () => {
     const heroTitle = document.querySelector('.hero-title');
     if (heroTitle) {
@@ -294,7 +280,7 @@ window.addEventListener('load', () => {
     }
 });
 
-// === Animated Background Particles ===
+
 (function() {
     const canvas = document.getElementById('bg-particles');
     if (!canvas) return;
@@ -331,18 +317,17 @@ window.addEventListener('load', () => {
         const isDark = document.body.classList.contains('dark-mode');
         if (isDark) {
             return [
-                'rgba(0,246,255,0.18)', // cyber-cyan
-                'rgba(255,0,229,0.13)', // cyber-pink
-                'rgba(57,255,20,0.10)', // cyber-green
-                'rgba(138,43,226,0.10)' // cyber-purple
+                'rgba(0,246,255,0.18)', 
+                'rgba(255,0,229,0.13)', 
+                'rgba(57,255,20,0.10)',
+                'rgba(138,43,226,0.10)' 
             ];
         } else {
             return [
-                'rgba(56,189,248,0.13)', // sky-blue
-                'rgba(110,231,183,0.10)', // light-green
-                'rgba(59,130,246,0.10)', // accent blue
-                'rgba(37,99,235,0.10)' // primary blue
-            ];
+                'rgba(56,189,248,0.13)',
+                'rgba(110,231,183,0.10)', 
+                'rgba(59,130,246,0.10)', 
+                'rgba(37,99,235,0.10)' 
         }
     }
 
@@ -360,7 +345,7 @@ window.addEventListener('load', () => {
         const scrollY = window.scrollY;
         for (let i = 0; i < particles.length; i++) {
             const p = particles[i];
-            // Parallax effect: move with scroll
+          
             const y = p.y + (scrollY * p.speed * 0.3);
             ctx.save();
             ctx.globalAlpha = p.opacity;
@@ -370,7 +355,7 @@ window.addEventListener('load', () => {
             if (p.shape === 'circle') {
                 ctx.arc(0, 0, p.size, 0, Math.PI * 2);
             } else {
-                // Draw polygon
+               
                 const sides = p.sides;
                 for (let j = 0; j < sides; j++) {
                     const theta = (Math.PI * 2 / sides) * j;
@@ -396,7 +381,7 @@ window.addEventListener('load', () => {
 
     window.addEventListener('resize', resizeCanvas);
     window.addEventListener('scroll', draw);
-    // Redraw on theme change
+ 
     const observer = new MutationObserver(draw);
     observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
 
@@ -404,7 +389,7 @@ window.addEventListener('load', () => {
     animate();
 })();
 
-// Animated bottom visual: SVG ocean waves (light) or cyberpunk wind (dark)
+
 (function() {
     const svg = document.getElementById('bottom-svg-visual');
     if (!svg) return;
