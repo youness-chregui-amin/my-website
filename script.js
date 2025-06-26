@@ -49,6 +49,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
+
 const observerOptions = {
     threshold: 0.5,
     rootMargin: '0px 0px -100px 0px'
@@ -104,7 +105,8 @@ const skillsSection = document.querySelector('.skills');
 if (skillsSection) {
     skillsObserver.observe(skillsSection);
 }
-ranslateY(-5px)';
+
+
 
 const themeSwitcher = document.querySelector('.theme-switcher i');
 const body = document.body;
@@ -159,40 +161,42 @@ if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-      
+       
         const formData = new FormData(this);
         const name = formData.get('name');
         const email = formData.get('email');
         const subject = formData.get('subject');
         const message = formData.get('message');
         
-      
+       
         if (!name || !email || !subject || !message) {
             alert('Please fill in all fields.');
             return;
         }
         
+   
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             alert('Please enter a valid email address.');
             return;
         }
-       
+        
+     
         const submitBtn = this.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitBtn.disabled = true;
         
-        
+    
         setTimeout(() => {
           
             this.reset();
             
-          
+         
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
             
-            
+         
             alert('Thank you! Your message has been sent successfully. I will get back to you soon.');
         }, 2000);
     });
@@ -319,15 +323,16 @@ window.addEventListener('load', () => {
             return [
                 'rgba(0,246,255,0.18)', 
                 'rgba(255,0,229,0.13)', 
-                'rgba(57,255,20,0.10)',
+                'rgba(57,255,20,0.10)', 
                 'rgba(138,43,226,0.10)' 
             ];
         } else {
             return [
-                'rgba(56,189,248,0.13)',
+                'rgba(56,189,248,0.13)', 
                 'rgba(110,231,183,0.10)', 
                 'rgba(59,130,246,0.10)', 
                 'rgba(37,99,235,0.10)' 
+            ];
         }
     }
 
@@ -345,7 +350,7 @@ window.addEventListener('load', () => {
         const scrollY = window.scrollY;
         for (let i = 0; i < particles.length; i++) {
             const p = particles[i];
-          
+         
             const y = p.y + (scrollY * p.speed * 0.3);
             ctx.save();
             ctx.globalAlpha = p.opacity;
@@ -355,7 +360,7 @@ window.addEventListener('load', () => {
             if (p.shape === 'circle') {
                 ctx.arc(0, 0, p.size, 0, Math.PI * 2);
             } else {
-               
+                // Draw polygon
                 const sides = p.sides;
                 for (let j = 0; j < sides; j++) {
                     const theta = (Math.PI * 2 / sides) * j;
@@ -381,7 +386,7 @@ window.addEventListener('load', () => {
 
     window.addEventListener('resize', resizeCanvas);
     window.addEventListener('scroll', draw);
- 
+    
     const observer = new MutationObserver(draw);
     observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
 
